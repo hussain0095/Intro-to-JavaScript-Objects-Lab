@@ -80,29 +80,21 @@ pokemon.forEach((mon) => {
   }
 });
 
-// Exercise 10
+// Exercise 10 + 11 (clean: one method only)
 game.catchPokemon = function (pokemonObj) {
   this.party.push(pokemonObj);
-};
 
-const caught1 = pokemon.find((mon) => mon.number === 10);
-if (caught1) {
-  game.catchPokemon(caught1);
-}
-
-// Exercise 11
-game.catchPokemon = function (pokemonObj) {
-  this.party.push(pokemonObj);
   const pokeballItem = this.items.find((item) => item.name === "pokeball");
   if (pokeballItem) {
     pokeballItem.quantity -= 1;
   }
 };
 
+const caught1 = pokemon.find((mon) => mon.number === 10);
+if (caught1) game.catchPokemon(caught1);
+
 const caught2 = pokemon.find((mon) => mon.number === 11);
-if (caught2) {
-  game.catchPokemon(caught2);
-}
+if (caught2) game.catchPokemon(caught2);
 
 console.log(game.items);
 
@@ -121,11 +113,8 @@ game.gymStatus = function () {
   };
 
   this.gyms.forEach((gym) => {
-    if (gym.completed) {
-      gymTally.completed += 1;
-    } else {
-      gymTally.incomplete += 1;
-    }
+    if (gym.completed) gymTally.completed += 1;
+    else gymTally.incomplete += 1;
   });
 
   console.log(gymTally);
